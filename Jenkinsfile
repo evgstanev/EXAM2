@@ -1,12 +1,12 @@
 pipeline {
     agent any
-    when  {
-      branch 'feature-ci-pipeline'
-    }
     stages {
-        stage('Restore  dependencies') {
+        stage('Restore dependencies') {
+            when {
+                branch 'feature-ci-pipeline'
+            }
             steps {
-                sh 'dotnet build'
+                sh 'dotnet restore'
             }
         }
         stage('Build Project') {
